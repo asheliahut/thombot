@@ -45,6 +45,10 @@ async def ostats(client, message):
 async def sombra(client, message):
     await client.send_file(message.channel, '/home/pi/bigdickbot/pictures/sombra.jpg')
 
+#post aliens guy
+async def aliens(client,message):
+    await client.send_file(message.channel, '/home/pi/bigdickbot/pictures/aliens.png')
+
 #async def test(client, message):
     #for channel in message.server.channels:
         #if channel.id == '85228383054594048':
