@@ -41,6 +41,11 @@ async def ostats(client, message):
      else:
         await client.send_message(message.channel, 'Incorrect battletag format.\nPlease use the format \' !ostats battletag-1234\'')
 
+#change the currently playing game
+async def gameset(client,message):
+    game_name = message.content[9:]
+    await client.change_presence(game=discord.Game(name=game_name))
+
 #post sombra shit
 async def sombra(client, message):
     await client.send_file(message.channel, '/home/pi/bigdickbot/pictures/sombra.jpg')
