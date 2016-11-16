@@ -49,6 +49,10 @@ async def sombra(client, message):
 async def aliens(client,message):
     await client.send_file(message.channel, '/home/pi/bigdickbot/pictures/aliens.png')
 
+#return the slab, maybe do soemthing better later. Not sure what else i could do though.
+async def slab(client,message):
+    await client.send_message(message.channel, 'RETURN THE SLAAAAB')
+
 #async def test(client, message):
     #for channel in message.server.channels:
         #if channel.id == '85228383054594048':
