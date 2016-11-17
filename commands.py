@@ -22,15 +22,15 @@ async def nickelback(client, message):
 
 #lets users get help!
 async def bothelp(client, message):
-    help_file = open('helpinfo.txt','r')
+    help_file = open('/home/pi/thombot/helpinfo.txt','r')
     help_info = help_file.read()
-    await client.send_message(message.channel, help_info)
+    await client.send_message(message.author, help_info)
     help_file.close()
 
 #random harambe picture
 async def harambe(client, message):
     harambe_pics = ('Harambe.jpg','Harambe2.jpg','Harambe3.jpg','Harambe4.jpg','Harambe5.jpg','Harambe6.jpg','Harambe7.jpg','Harambe8.jpg')
-    await client.send_file(message.channel, '/home/pi/bigdickbot/pictures/harambe/' + random.choice(harambe_pics))
+    await client.send_file(message.channel, '/home/pi/thombot/pictures/harambe/' + random.choice(harambe_pics))
 
 #post a persons mastersoverwatch page using their battletag
 async def ostats(client, message):
@@ -48,11 +48,11 @@ async def gameset(client,message):
 
 #post sombra shit
 async def sombra(client, message):
-    await client.send_file(message.channel, '/home/pi/bigdickbot/pictures/sombra.jpg')
+    await client.send_file(message.channel, '/home/pi/thombot/pictures/sombra.jpg')
 
 #post aliens guy
 async def aliens(client,message):
-    await client.send_file(message.channel, '/home/pi/bigdickbot/pictures/aliens.png')
+    await client.send_file(message.channel, '/home/pi/thombot/pictures/aliens.png')
 
 #return the slab, maybe do soemthing better later. Not sure what else i could do though.
 async def slab(client,message):
