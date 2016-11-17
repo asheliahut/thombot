@@ -1,1 +1,20 @@
-HELP ME I AM DYING WTF
+I do stuff:
+
+!sombra
+    latest sombra news
+!ostats battletag-1234
+    post mastersoverwatch stats page
+!cat
+    post random cat pictures
+!bothelp
+    get message with bot command info(you already used it)
+!harambe
+    post random harambe pictures
+!gameset gamename
+    change the game the bot is playing
+!aliens
+    post aliens guy pic(ash made me do it)
+!slab
+    RETURN THE SLAB
+!wakemeup
+    can't wake up

@@ -15,7 +15,7 @@ async def on_ready():
     print(client.user.name)
     print(client.user.id)
     print('--------')
-    await client.change_presence(game=discord.Game(name = 'Christmas Carols'))
+    await client.change_presence(game=discord.Game(name='Christmas Carols'))
 
 #welcome new members to the server
 @client.event
