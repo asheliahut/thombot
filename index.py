@@ -39,4 +39,4 @@ async def on_message(message):
         if message.author.bot == False:
             await client.send_message(message.channel, 'Merry Christmas!')
 
-client.run('MjIwMzgwOTEzODExMzI0OTI5.CqfjnQ.Zyyg33qyveh6omw1RSlHqDUVXKg')
+client.run('MjQwOTMyNTAwNzI4MzE1OTA0.CvKq3Q.Rk_7Pllbu3humowD4uYp0gxJ7rM')
