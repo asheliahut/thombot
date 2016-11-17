@@ -58,6 +58,10 @@ async def aliens(client,message):
 async def slab(client,message):
     await client.send_message(message.channel, 'RETURN THE SLAAAAB')
 
+#can't wake up
+aync def wakemeup(client,message):
+    await client.send_message(message.channel, 'no')
+
 #async def test(client, message):
     #for channel in message.server.channels:
         #if channel.id == '85228383054594048':
