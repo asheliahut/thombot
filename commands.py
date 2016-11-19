@@ -62,6 +62,10 @@ async def slab(client,message):
 async def wakemeup(client,message):
     await client.send_message(message.channel, 'no')
 
+async def setavatar(client,message):
+    avatar = open('/home/pi/thombot/pictures/avatar.jpg', 'rb')
+    await client.edit_profile(avatar=avatar.read())
+
 #async def test(client, message):
     #for channel in message.server.channels:
         #if channel.id == '85228383054594048':
