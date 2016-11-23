@@ -41,7 +41,7 @@ async def ostats(client, message):
      else:
         await client.send_message(message.channel, 'Incorrect battletag format.\nPlease use the format \' !ostats battletag-1234\'')
 
-#change the currently playing game. Must ahve bot friend role to use
+#change the currently playing game. Must have bot friend role to use
 async def gameset(client,message):
     role_test = 1
     for role in message.author.roles:
