@@ -15,7 +15,7 @@ async def on_ready():
     print(client.user.name)
     print(client.user.id)
     print('--------')
-    await client.change_presence(game=discord.Game(name='Christmas Carols'))
+    await client.change_presence(game=discord.Game(name='with dreidels'))
 
 #welcome new members to the server
 @client.event
@@ -39,6 +39,7 @@ async def on_message(message):
             await client.send_message(message.channel, 'Merry Christmas!')
     for mention_search in message.mentions:
         if mention_search.name == 'Christmas Bird':
-            await client.send_message(message.channel, 'Merry Christmas, ' + mention_search.mention)
+            if message.author.bot == False:
+                await client.send_message(message.channel, 'Merry Christmas, ' + mention_search.mention)
 
 client.run('MjQwOTMyNTAwNzI4MzE1OTA0.CvKq3Q.Rk_7Pllbu3humowD4uYp0gxJ7rM')
