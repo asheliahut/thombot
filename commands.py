@@ -84,7 +84,7 @@ async def setavatar(client,message):
 async def tilISeeYou(client,message):
     url = 'http://iwillseeyousoon.com/countdown.php'
     days = requests.get(url).text
-    await client.send_message(message.channel, 'Ashley gets to see Trevor in '+ days + 'days');
+    await client.send_message(message.channel, 'Ashley gets to see Trevor in '+ days + 'days')
 
 #async def test(client, message):
     #for channel in message.server.channels:
