@@ -35,7 +35,7 @@ async def on_message(message):
         if role_search.name == 'Nickelback':
             await commands.nickelback(client, message)
             break
-    if re.search('christmas', message.content):
+    if re.search(r'[Cc]hristmas', message.content):
         if message.author.bot == False:
             await client.send_message(message.channel, 'Merry Christmas!')
 
