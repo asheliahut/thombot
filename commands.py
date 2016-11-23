@@ -45,7 +45,7 @@ async def ostats(client, message):
 async def gameset(client,message):
     role_test = 1
     for role in message.author.roles:
-        if role_name == 'bot friend':
+        if role.name == 'bot friend':
             game_name = message.content[9:]
             await client.change_presence(game=discord.Game(name=game_name))
             role_test = 0
