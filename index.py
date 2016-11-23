@@ -36,10 +36,10 @@ async def on_message(message):
             await commands.nickelback(client, message)
     if re.search(r'[Cc]hristmas', message.content):
         if message.author.bot == False:
-            await client.send_message(message.channel, 'Merry Christmas!')
+            await client.send_message(message.channel, 'Merry Christmas, {}!'.format(message.author.mention))
     for mention_search in message.mentions:
         if mention_search.name == 'Christmas Bird':
             if message.author.bot == False:
-                await client.send_message(message.channel, 'Merry Christmas, ' + mention_search.mention)
+                await client.send_message(message.channel, 'Merry Christmas, ' + mention_search.mention + '!')
 
 client.run('MjQwOTMyNTAwNzI4MzE1OTA0.CvKq3Q.Rk_7Pllbu3humowD4uYp0gxJ7rM')
