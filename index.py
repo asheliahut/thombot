@@ -34,11 +34,11 @@ async def on_message(message):
     for role_search in message.role_mentions:
         if role_search.name == 'Nickelback':
             await commands.nickelback(client, message)
-        elif role_search.name == 'Christmas Bird':
-            await client.send_message(message.channel, 'Merry Christmas, ' + role_search.mention)
-
     if re.search(r'[Cc]hristmas', message.content):
         if message.author.bot == False:
             await client.send_message(message.channel, 'Merry Christmas!')
+    for mention_search in message.mentions:
+        if mention_search.name == 'Christmas Bird':
+            await client.send_message(message.channel, 'Merry Christmas, ' + mention_search.mention)
 
 client.run('MjQwOTMyNTAwNzI4MzE1OTA0.CvKq3Q.Rk_7Pllbu3humowD4uYp0gxJ7rM')
