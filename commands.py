@@ -41,10 +41,17 @@ async def ostats(client, message):
      else:
         await client.send_message(message.channel, 'Incorrect battletag format.\nPlease use the format \' !ostats battletag-1234\'')
 
-#change the currently playing game
+#change the currently playing game. Must ahve bot friend role to use
 async def gameset(client,message):
-    game_name = message.content[9:]
-    await client.change_presence(game=discord.Game(name=game_name))
+    role_test = 1
+    for role in message.author.roles:
+        if role_name == 'bot friend':
+            game_name = message.content[9:]
+            await client.change_presence(game=discord.Game(name=game_name))
+            role_test = 0
+            break
+    if role_test == 1:
+        await client.send_message(message.channel, 'you\'re not a bot friend!')
 
 #post sombra shit
 async def sombra(client, message):
@@ -62,9 +69,18 @@ async def slab(client,message):
 async def wakemeup(client,message):
     await client.send_message(message.channel, 'no')
 
+
 async def setavatar(client,message):
-    avatar = open('/home/pi/thombot/pictures/avatar.jpg', 'rb')
-    await client.edit_profile(avatar=avatar.read())
+    role_test = 1
+    for role in message.author.roles:
+        if role.name == 'bot friend':
+            avatar = open('/home/pi/thombot/pictures/avatar.jpg', 'rb')
+            await client.edit_profile(avatar=avatar.read())
+            role_test = 0
+            break
+    if role_test == 1:
+        await client.send_message(message.channel, 'You\'re not a bot friend!')
+
 
 #async def test(client, message):
     #for channel in message.server.channels:
