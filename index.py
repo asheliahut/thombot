@@ -41,10 +41,7 @@ async def on_message(message):
         if message.content.startswith('!v joinchannel'):
             voice_channel_service = await voice.joinchannel(client,message)
         else:
-            if voice_channel_service == None:
-                await client.send_message(message.channel, 'I\'m not in a voice channel! use the !v joinchannel command and I\'ll join one!')
-            else:
-                await getattr(voice, input_command.group(0)[4:])(client, message_channel_service, voice)
+            await getattr(voice, input_command.group(0)[4:])(client, message_channel_service, voice)
         if message.content.startswith('!v leavechannel'):
             voice_channel_service = None
     for role_search in message.role_mentions:
