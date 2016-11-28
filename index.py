@@ -2,14 +2,15 @@
 import discord
 import asyncio
 import re
-import opuslib
-from ctypes.util import find_library
 
 #any bot resources to import
 import commands
+import voice
 
 #make the client and log in
 client = discord.Client()
+discord.opus.load_opus('/usr/lib/libopus.so')
+voice_channel_service = None
 
 @client.event
 async def on_ready():
@@ -33,6 +34,16 @@ async def on_message(message):
     if message.content.startswith('!'):
         input_command = re.match(r"!(\w+)", message.content)
         await getattr(commands, input_command.group(0)[1:])(client, message)
+    if message.content.startswith('!v '):
+        if message.content.startswith('!v joinchannel'):
+            voice_channel_service = await voice.joinchannel(client,message)
+        else:
+            if voice_channel_service == None:
+                await client.send_message(message.channel, 'I\'m not in a voice channel! use the !v joinchannel command and I\'ll join one!')
+            else:
+                await getattr(voice, input_command.group(0)[4:])(client, message_channel_service, voice)
+        if message.content.startswith('!v leavechannel'):
+            voice_channel_service = None
     for role_search in message.role_mentions:
         if role_search.name == 'Nickelback':
             await commands.nickelback(client, message)
@@ -43,20 +54,6 @@ async def on_message(message):
         if mention_search.name == 'Christmas Bird':
             if message.author.bot == False:
                 await client.send_message(message.channel, 'Merry Christmas, ' + mention_search.mention + '!')
-
-#voice client business stuff!
-#@client.event
-#async def on_message(message):
-    #if message.content.startswith('!playsong'):
-        #discord.opus.load_opus('/usr/lib/libopus.so')
-        #print(message.author.voice.voice_channel)
-        #if message.author.voice.voice_channel != None:
-            #voice = await client.join_voice_channel(message.author.voice.voice_channel)
-            #player = await voice.create_ytdl_player('http://www.youtube.com/watch?v=HgQEuPw942c')
-#            player.start()
-
-#    if message.content.startswith('!leave'):
-#        await voice.disconnect()
 
 
 client.run('MjQwOTMyNTAwNzI4MzE1OTA0.CvKq3Q.Rk_7Pllbu3humowD4uYp0gxJ7rM')
