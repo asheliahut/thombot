@@ -35,6 +35,8 @@ async def on_message(message):
         input_command = re.match(r"!(\w+)", message.content)
         try:
             await getattr(commands, input_command.group(0)[1:])(client, message)
+        except:
+            pass
     if message.content.startswith('!v '):
         if message.content.startswith('!v joinchannel'):
             voice_channel_service = await voice.joinchannel(client,message)
