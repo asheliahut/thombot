@@ -50,7 +50,7 @@ async def on_message(message):
 async def on_message(message):
     if message.content.startswith('!playsong'):
         print(message.author.voice.voice_channel)
-        if message.author.voice.voice_channel != 'None':
+        if message.author.voice.voice_channel != None:
             voice = await client.join_voice_channel(message.author.voice.voice_channel)
 
 client.run('MjQwOTMyNTAwNzI4MzE1OTA0.CvKq3Q.Rk_7Pllbu3humowD4uYp0gxJ7rM')
