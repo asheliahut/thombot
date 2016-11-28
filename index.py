@@ -37,13 +37,13 @@ async def on_message(message):
         except:
             pass
     if message.content.startswith('!v '):
-        voice_channel_service = None
         if message.content.startswith('!v joinchannel'):
-            voice_channel_service = await voice.joinchannel(client,message)
-        else:
-            await getattr(voice, input_command.group(0)[2:])(client, message_channel_service, voice_channel_service)
-        if message.content.startswith('!v leavechannel'):
-            voice_channel_service = None
+            voice_channel_service = voice.voice(client,message)
+        if message.content.startswith('!v leave'):
+            voice_channel_service.leave()
+        if message.content.startswith('!v playsong'):
+            song_to_play = message.content[13:]
+            voice_channel_service.playsong(song_to_play)
     for role_search in message.role_mentions:
         if role_search.name == 'Nickelback':
             await commands.nickelback(client, message)
