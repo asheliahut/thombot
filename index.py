@@ -49,8 +49,13 @@ async def on_message(message):
 @client.event
 async def on_message(message):
     if message.content.startswith('!playsong'):
+        client.opus.load_opus()
         print(message.author.voice.voice_channel)
         if message.author.voice.voice_channel != None:
             voice = await client.join_voice_channel(message.author.voice.voice_channel)
+
+    if message.content.startswith('!leave'):
+        await client.disconnect()
+
 
 client.run('MjQwOTMyNTAwNzI4MzE1OTA0.CvKq3Q.Rk_7Pllbu3humowD4uYp0gxJ7rM')
