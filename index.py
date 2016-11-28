@@ -3,11 +3,10 @@ import discord
 import asyncio
 import re
 import opuslib
+from ctypes.util import find_library
 
 #any bot resources to import
 import commands
-
-#opuslib.load_opus()
 
 #make the client and log in
 client = discord.Client()
@@ -49,7 +48,7 @@ async def on_message(message):
 @client.event
 async def on_message(message):
     if message.content.startswith('!playsong'):
-        client.opus.load_opus()
+        client.opus.load_opus(find_library(opus))
         print(message.author.voice.voice_channel)
         if message.author.voice.voice_channel != None:
             voice = await client.join_voice_channel(message.author.voice.voice_channel)
