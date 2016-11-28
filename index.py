@@ -8,6 +8,7 @@ import opuslib
 import commands
 
 opuslib.load_opus()
+
 #make the client and log in
 client = discord.Client()
 
@@ -48,7 +49,8 @@ async def on_message(message):
 @client.event
 async def on_message(message):
     if message.content.startswith('!playsong'):
-        if message.author.voice.voice_channel != 'None':
-            voice = await client.join_voice_channel(message.author.voice.voice_channel)
+        print(message.author.voice.voice_channel)
+        #if message.author.voice.voice_channel != 'None':
+            #voice = await client.join_voice_channel(message.author.voice.voice_channel)
 
 client.run('MjQwOTMyNTAwNzI4MzE1OTA0.CvKq3Q.Rk_7Pllbu3humowD4uYp0gxJ7rM')
