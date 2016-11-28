@@ -9,7 +9,7 @@ class voice:
         self.server = ""
 
     def joinchannel(client,message):
-        voice = await client.join_voice_channel(message.author.voice_channel)
+        voice = client.join_voice_channel(message.author.voice_channel)
 
     def leave():
         await self.voice.disconnect()
