@@ -7,7 +7,7 @@ import opuslib
 #any bot resources to import
 import commands
 
-opuslib.load_opus()
+#opuslib.load_opus()
 
 #make the client and log in
 client = discord.Client()
