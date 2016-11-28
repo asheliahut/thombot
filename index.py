@@ -2,10 +2,12 @@
 import discord
 import asyncio
 import re
+import opuslib
 
 #any bot resources to import
 import commands
 
+opuslib.load_opus()
 #make the client and log in
 client = discord.Client()
 
@@ -41,5 +43,12 @@ async def on_message(message):
         if mention_search.name == 'Christmas Bird':
             if message.author.bot == False:
                 await client.send_message(message.channel, 'Merry Christmas, ' + mention_search.mention + '!')
+
+#voice client business stuff!
+@client.event
+async def on_message(message):
+    if message.content.startswith('!playsong'):
+        if message.author.voice.voice_channel != 'None':
+            voice = await client.join_voice_channel(message.author.voice.voice_channel)
 
 client.run('MjQwOTMyNTAwNzI4MzE1OTA0.CvKq3Q.Rk_7Pllbu3humowD4uYp0gxJ7rM')
