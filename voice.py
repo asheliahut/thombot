@@ -6,7 +6,10 @@ import asyncio
 
 class voice:
     def init(self, client, message):
-        self.voice = await client.join_voice_channel(message.author.voice_channel)
+        self.server = ""
+
+    def joinchannel(client,message):
+        voice = await client.join_voice_channel(message.author.voice_channel)
 
     def leave():
         await self.voice.disconnect()
