@@ -48,10 +48,12 @@ async def on_message(message):
 @client.event
 async def on_message(message):
     if message.content.startswith('!playsong'):
-        client.opus.load_opus(find_library(opus))
+        #client.opus.load_opus(find_library(opus))
         print(message.author.voice.voice_channel)
         if message.author.voice.voice_channel != None:
             voice = await client.join_voice_channel(message.author.voice.voice_channel)
+            player = await voice.create_ytdl_player('https://www.youtube.com/watch?v=HgQEuPw942c')
+            player.start()
 
     if message.content.startswith('!leave'):
         await client.disconnect()
