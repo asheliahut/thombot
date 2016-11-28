@@ -45,18 +45,18 @@ async def on_message(message):
                 await client.send_message(message.channel, 'Merry Christmas, ' + mention_search.mention + '!')
 
 #voice client business stuff!
-@client.event
-async def on_message(message):
-    if message.content.startswith('!playsong'):
-        discord.opus.load_opus('/usr/lib/libopus.so')
-        print(message.author.voice.voice_channel)
-        if message.author.voice.voice_channel != None:
-            voice = await client.join_voice_channel(message.author.voice.voice_channel)
-            player = await voice.create_ytdl_player('http://www.youtube.com/watch?v=HgQEuPw942c')
-            player.start()
+#@client.event
+#async def on_message(message):
+    #if message.content.startswith('!playsong'):
+        #discord.opus.load_opus('/usr/lib/libopus.so')
+        #print(message.author.voice.voice_channel)
+        #if message.author.voice.voice_channel != None:
+            #voice = await client.join_voice_channel(message.author.voice.voice_channel)
+            #player = await voice.create_ytdl_player('http://www.youtube.com/watch?v=HgQEuPw942c')
+#            player.start()
 
-    if message.content.startswith('!leave'):
-        await voice.disconnect()
+#    if message.content.startswith('!leave'):
+#        await voice.disconnect()
 
 
 client.run('MjQwOTMyNTAwNzI4MzE1OTA0.CvKq3Q.Rk_7Pllbu3humowD4uYp0gxJ7rM')
