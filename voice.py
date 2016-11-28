@@ -9,11 +9,11 @@ class voice:
         self.server = ""
 
     def joinchannel(client,message):
-        voice = client.join_voice_channel(message.author.voice_channel)
+        self.voice = client.join_voice_channel(message.author.voice_channel)
 
     def leave():
-        await self.voice.disconnect()
+        self.voice.disconnect()
 
     def playsong(url):
-        player = await voice.create_ytdl_player(url)
-        player.start()
+        self.player = voice.create_ytdl_player(url)
+        self.player.start()
