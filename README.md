@@ -23,3 +23,9 @@ Currently sets the game itself in the bot code, might add a command later to cha
 Need to update help file, lots of old info and outdated stuff. Might have it send a private message to the person to uses the command instead posting it in the channel.
 
 always looking for new and fun things to add.(and dumb things too)
+
+things to add:
+
+-search youtube
+-lookup weather by zipcode
+-coin toss
