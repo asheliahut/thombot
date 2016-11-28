@@ -48,7 +48,7 @@ async def on_message(message):
 @client.event
 async def on_message(message):
     if message.content.startswith('!playsong'):
-        client.opus.load_opus('/usr/lib/libopus.so')
+        discord.opus.load_opus('/usr/lib/libopus.so')
         print(message.author.voice.voice_channel)
         if message.author.voice.voice_channel != None:
             voice = await client.join_voice_channel(message.author.voice.voice_channel)
