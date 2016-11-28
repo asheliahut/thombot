@@ -10,7 +10,6 @@ import voice
 #make the client and log in
 client = discord.Client()
 discord.opus.load_opus('/usr/lib/libopus.so')
-voice_channel_service = None
 
 @client.event
 async def on_ready():
@@ -38,6 +37,7 @@ async def on_message(message):
         except:
             pass
     if message.content.startswith('!v '):
+        voice_channel_service = None
         if message.content.startswith('!v joinchannel'):
             voice_channel_service = await voice.joinchannel(client,message)
         else:
