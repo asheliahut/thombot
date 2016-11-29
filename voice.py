@@ -6,14 +6,21 @@ import asyncio
 
 class voice:
     def init(self, client, message):
-        self.server = ""
+        self.client = client
+        self.message = message
 
-    def joinchannel(client,message):
-        self.voice = client.join_voice_channel(message.author.voice_channel)
+    async def joinchannel(self):
+        try:
+            self.voice = await self.client.join_voice_channel(message.author.voice_channel)
+        except:
+            pass
 
-    def leave():
-        self.voice.disconnect()
+    async def leave(self):
+        try:
+            await self.voice.disconnect()
+        except:
+            pass
 
-    def playsong(url):
-        self.player = voice.create_ytdl_player(url)
-        self.player.start()
+    async def playsong(url):
+        await self.player = self.voice.create_ytdl_player(url)
+        await self.player.start()
