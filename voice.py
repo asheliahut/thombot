@@ -22,4 +22,14 @@ class voice:
 
     async def playsong(self, url):
         self.player = await self.voice.create_ytdl_player(url)
-        await self.player.start()
+        self.player.start()
+
+    async def pause(self):
+        self.player.pause()
+
+    async def resume(self):
+        self.player.resume()
+
+    async def volume(self, v_level):
+        if v_level < 200:
+            player.volume = v_level / 100
