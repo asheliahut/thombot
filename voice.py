@@ -24,6 +24,7 @@ class voice:
         if hasattr(self, 'player'):
             try:
                 player.stop()
+                player.cancel()
             except:
                 pass
             try:
