@@ -32,4 +32,4 @@ class voice:
 
     async def volume(self, v_level):
         if v_level < 200:
-            player.volume = v_level / 100
+            self.player.volume = v_level / 100
