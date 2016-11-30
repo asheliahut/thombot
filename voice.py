@@ -29,6 +29,8 @@ class voice:
             try:
                 self.player = await self.voice.create_ytdl_player(url)
                 self.player.start()
+            except:
+                pass
         else:
             try:
                 self.player = await self.voice.create_ytdl_player(url)
