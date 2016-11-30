@@ -40,11 +40,11 @@ async def on_message(message):
         except:
             pass
     if message.content.startswith('!v '):
-        if message.content.startswith('!v joinchannel'):
+        if message.content.startswith('!v join'):
             await voice_channel.joinchannel(message)
         if message.content.startswith('!v leave'):
             await voice_channel.leave()
-        if message.content.startswith('!v playsong'):
+        if message.content.startswith('!v play'):
             song_to_play = message.content[12:]
             await voice_channel.playsong(song_to_play)
     for role_search in message.role_mentions:
