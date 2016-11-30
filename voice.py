@@ -24,7 +24,9 @@ class voice:
         if hasattr(self, 'player'):
             if self.player.is_playing():
                 try:
-                    player.stop()
+                    self.player.stop()
+                    self.player = await self.voice.create_ytdl_player(url)
+                    self.player.start()
                 except:
                     pass
             else:
