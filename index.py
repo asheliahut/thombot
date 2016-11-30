@@ -52,7 +52,7 @@ async def on_message(message):
         if message.content.startswith('!v resume'):
             await voice_channel.resume()
         if message.content.startswith('!v volume'):
-            level = message.content[10:]
+            level = int(message.content[10:])
             await voice_channel.volume(level)
     for role_search in message.role_mentions:
         if role_search.name == 'Nickelback':
