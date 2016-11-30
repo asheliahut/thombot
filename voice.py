@@ -23,7 +23,8 @@ class voice:
     async def playsong(self, url):
         if hasattr(self, 'player'):
             try:
-                player.stop()
+                self.player.stop()
+                #self.player = None
             except:
                 pass
             try:
@@ -40,6 +41,7 @@ class voice:
 
     async def stop(self):
         self.player.stop()
+        self.player = None
 
     async def pause(self):
         self.player.pause()
