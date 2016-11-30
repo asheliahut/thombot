@@ -21,18 +21,25 @@ class voice:
             pass
 
     async def playsong(self, url):
-        if self.player.is_playing():
-            try:
-                player.stop()
-            except:
-                pass
+        if hasattr(self, 'player'):
+            if self.player.is_playing():
+                try:
+                    player.stop()
+                except:
+                    pass
+            else:
+                try:
+                    self.player = await self.voice.create_ytdl_player(url)
+                    self.player.start()
+                except:
+                    pass
         else:
             try:
                 self.player = await self.voice.create_ytdl_player(url)
                 self.player.start()
             except:
                 pass
-
+            
     async def pause(self):
         self.player.pause()
 
