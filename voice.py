@@ -24,7 +24,6 @@ class voice:
         if hasattr(self, 'player'):
             try:
                 player.stop()
-                player.cancel()
             except:
                 pass
             try:
@@ -38,6 +37,9 @@ class voice:
                 self.player.start()
             except:
                 pass
+
+    async def stop(self):
+        self.player.stop()
 
     async def pause(self):
         self.player.pause()

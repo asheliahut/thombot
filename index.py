@@ -54,6 +54,8 @@ async def on_message(message):
         if message.content.startswith('!v volume'):
             level = int(message.content[10:])
             await voice_channel.volume(level)
+        if message.content.startswith('!v stop'):
+            await voice_channel.stop()
     for role_search in message.role_mentions:
         if role_search.name == 'Nickelback':
             await commands.nickelback(client, message)
