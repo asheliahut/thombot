@@ -7,6 +7,7 @@ import asyncio
 class voice:
     def __init__(self, client):
         self.client = client
+        self.v_level = 0.5
 
     async def joinchannel(self, message):
         try:
@@ -24,18 +25,19 @@ class voice:
         if hasattr(self, 'player'):
             try:
                 self.player.stop()
-                #self.player = None
             except:
                 pass
             try:
                 self.player = await self.voice.create_ytdl_player(url)
                 self.player.start()
+                self.player.volume = v_level
             except:
                 pass
         else:
             try:
                 self.player = await self.voice.create_ytdl_player(url)
                 self.player.start()
+                self.player.volume = v_level
             except:
                 pass
 
@@ -49,6 +51,6 @@ class voice:
     async def resume(self):
         self.player.resume()
 
-    async def volume(self, v_level):
-        if v_level < 200:
-            self.player.volume = v_level / 100
+    async def volume(self, v_input):
+        self.v_level = v_input / 100
+        self.player.volume = self.v_level
