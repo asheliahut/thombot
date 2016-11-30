@@ -10,7 +10,7 @@ class voice:
 
     async def joinchannel(self, message):
         try:
-            voice = await self.client.join_voice_channel(message.author.voice_channel)
+            self.voice = await self.client.join_voice_channel(message.author.voice_channel)
         except:
             pass
 
