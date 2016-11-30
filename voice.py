@@ -21,6 +21,6 @@ class voice:
         except:
             pass
 
-    async def playsong(url):
+    async def playsong(self, url):
         self.player = await self.voice.create_ytdl_player(url)
         await self.player.start()

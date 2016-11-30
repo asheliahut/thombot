@@ -40,8 +40,8 @@ async def on_message(message):
             pass
     if message.content.startswith('!v '):
         if message.content.startswith('!v joinchannel'):
-            voice_channel_service = voice.voice()
-            voice_channel_service.joinchannel(client,message)
+            voice_channel_service = voice.voice(client, message)
+            voice_channel_service.joinchannel()
         if message.content.startswith('!v leave'):
             voice_channel_service.leave()
         if message.content.startswith('!v playsong'):
