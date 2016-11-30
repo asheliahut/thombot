@@ -9,7 +9,9 @@ import voice
 
 #make the client and log in
 client = discord.Client()
-discord.opus.load_opus('/usr/lib/libopus.so')
+
+if not discord.opus.is_loaded():
+    discord.opus.load_opus('/usr/lib/libopus.so')
 
 @client.event
 async def on_ready():
