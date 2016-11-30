@@ -5,13 +5,12 @@ import asyncio
 
 
 class voice:
-    def __init__(self, client, message):
+    def __init__(self, client):
         self.client = client
-        self.message = message
 
-    async def joinchannel(self):
+    async def joinchannel(self, message):
         try:
-            voice = await self.client.join_voice_channel(self.message.author.voice_channel)
+            voice = await self.client.join_voice_channel(message.author.voice_channel)
         except:
             pass
 

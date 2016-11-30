@@ -9,6 +9,7 @@ import voice
 
 #make the client and log in
 client = discord.Client()
+voice_channel = voice.voice(client)
 
 if not discord.opus.is_loaded():
     discord.opus.load_opus('/usr/lib/libopus.so')
@@ -40,8 +41,7 @@ async def on_message(message):
             pass
     if message.content.startswith('!v '):
         if message.content.startswith('!v joinchannel'):
-            voice_channel = voice.voice(client, message)
-            await voice_channel.joinchannel()
+            await voice_channel.joinchannel(message)
         if message.content.startswith('!v leave'):
             voice_channel.leave()
         if message.content.startswith('!v playsong'):
