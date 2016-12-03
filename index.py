@@ -48,14 +48,12 @@ async def on_message(message):
             song_to_play = message.content[8:]
             await voice_channel.playsong(song_to_play)
         if message.content.startswith('!v pause'):
-            await voice_channel.pause()
+            voice_channel.pause()
         if message.content.startswith('!v resume'):
-            await voice_channel.resume()
+            voice_channel.resume()
         if message.content.startswith('!v volume'):
             level = int(message.content[10:])
-            await voice_channel.volume(level)
-        if message.content.startswith('!v stop'):
-            await voice_channel.stop()
+            voice_channel.volume(level)
     for role_search in message.role_mentions:
         if role_search.name == 'Nickelback':
             await commands.nickelback(client, message)

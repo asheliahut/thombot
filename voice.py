@@ -8,6 +8,7 @@ class voice:
     def __init__(self, client):
         self.client = client
         self.v_level = 0.2
+        self.playlist = []
 
     async def joinchannel(self, message):
         try:
@@ -21,18 +22,16 @@ class voice:
         except:
             pass
 
-    async def playsong(self, url):
+    async def playsong(self, url, message):
         if hasattr(self, 'player'):
-            try:
+            if self.player.is_playing():
+                self.playlist.append(url)
+                await self.client.send_message(message.channel, 'Added song to queue!')
+            else:
                 self.player.stop()
-            except:
-                pass
-            try:
                 self.player = await self.voice.create_ytdl_player(url)
                 self.player.start()
                 self.player.volume = self.v_level
-            except:
-                pass
         else:
             try:
                 self.player = await self.voice.create_ytdl_player(url)
@@ -41,15 +40,22 @@ class voice:
             except:
                 pass
 
-    async def stop(self):
-        self.player.stop()
+    async def skip(self):
+        if self.player.is_playing():
+            if not self.playlist == []:
+                await self.client.send_message(message.channel, 'the queue is empty!')
+            else:
+                self.player.stop()
+                self.player = await self.voice.create_ytdl_player(self.playlist.pop())
+        else:
+            await self.client.send_message(message.channel, 'not playing anything!')
 
-    async def pause(self):
+    def pause(self):
         self.player.pause()
 
-    async def resume(self):
+    def resume(self):
         self.player.resume()
 
-    async def volume(self, v_input):
+    def volume(self, v_input):
         self.v_level = v_input / 100
         self.player.volume = self.v_level
