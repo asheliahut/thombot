@@ -7,12 +7,15 @@ import asyncio
 class voice:
     def __init__(self, client):
         self.client = client
+        self.channel = ""
         self.v_level = 0.2
         self.playlist = []
+        music_channel = "" #set as bot music channel
 
     async def joinchannel(self, message):
         try:
             self.voice = await self.client.join_voice_channel(message.author.voice_channel)
+            self.channel = message.author.voice_channel
         except:
             pass
 
@@ -29,12 +32,12 @@ class voice:
                 await self.client.send_message(message.channel, 'Added song to queue!')
             else:
                 self.player.stop()
-                self.player = await self.voice.create_ytdl_player(url)
+                self.player = await self.voice.create_ytdl_player(url after=self.aftersong())
                 self.player.start()
                 self.player.volume = self.v_level
         else:
             try:
-                self.player = await self.voice.create_ytdl_player(url)
+                self.player = await self.voice.create_ytdl_player(url, after=self.aftersong())
                 self.player.start()
                 self.player.volume = self.v_level
             except:
@@ -42,13 +45,21 @@ class voice:
 
     async def skip(self):
         if self.player.is_playing():
-            if not self.playlist == []:
+            if self.playlist == []:
                 await self.client.send_message(message.channel, 'the queue is empty!')
             else:
                 self.player.stop()
-                self.player = await self.voice.create_ytdl_player(self.playlist.pop())
+                self.player = await self.voice.create_ytdl_player(self.playlist.pop(), after=self.aftersong())
         else:
             await self.client.send_message(message.channel, 'not playing anything!')
+
+    async def aftersong(self):
+        if self.playlist == []:
+            await client.send_message(music_channel, "the playlist is empty!")
+        else:
+            self.player.stop()
+            self.player = await self.voice.create_ytdl_player(self.playlist.pop(), after=self.aftersong())
+            self.player.start()
 
     def pause(self):
         self.player.pause()
