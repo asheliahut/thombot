@@ -30,7 +30,7 @@ class voice:
         except:
             pass
 
-    async def playsong(self, url, message):
+    async def playsong(self, url):
         if hasattr(self, 'player'):
             if self.player.is_playing():
                 self.playlist.append(url)
