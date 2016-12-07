@@ -10,7 +10,7 @@ class voice:
         self.channel = ""
         self.v_level = 0.2
         self.playlist = []
-        music_channel = "253409501716283402"
+        self.music_channel = "253409501716283402"
 
     async def joinchannel(self, message):
         if hasattr(self, 'voice'):
@@ -34,7 +34,7 @@ class voice:
         if hasattr(self, 'player'):
             if self.player.is_playing():
                 self.playlist.append(url)
-                await self.client.send_message(music_channel, 'Added song to playlist!')
+                await self.client.send_message(self.music_channel, 'Added song to playlist!')
             else:
                 self.player.stop()
                 self.player = await self.voice.create_ytdl_player(url, after = self.aftersong())
@@ -51,16 +51,16 @@ class voice:
     async def skip(self):
         if self.player.is_playing():
             if self.playlist == []:
-                await self.client.send_message(music_channel, 'the playlist is empty!')
+                await self.client.send_message(self.music_channel, 'the playlist is empty!')
             else:
                 self.player.stop()
                 #self.player = await self.voice.create_ytdl_player(self.playlist.pop(), after=self.aftersong())
         else:
-            await self.client.send_message(message.channel, 'not playing anything!')
+            await self.client.send_message(self.message.channel, 'not playing anything!')
 
     def aftersong(self):
         if self.playlist == []:
-            #await client.send_message(music_channel, "the playlist is empty!")
+            #await client.send_message(self.music_channel, "the playlist is empty!")
             pass
         else:
             self.player.stop()
