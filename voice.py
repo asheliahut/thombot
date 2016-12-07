@@ -56,6 +56,7 @@ class voice:
                 else:
                     self.player.stop()
                     self.player = await self.voice.create_ytdl_player(self.playlist.pop(), after = self.aftersong())
+                    self.player.start()
             else:
                 await self.client.send_message(self.music_channel, 'not playing anything!')
         else:
