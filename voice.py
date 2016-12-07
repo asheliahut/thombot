@@ -37,7 +37,7 @@ class voice:
                 await self.client.send_message(music_channel, 'Added song to playlist!')
             else:
                 self.player.stop()
-                self.player = await self.voice.create_ytdl_player(url after=self.aftersong())
+                self.player = await self.voice.create_ytdl_player(url, after=self.aftersong())
                 self.player.start()
                 self.player.volume = self.v_level
         else:
