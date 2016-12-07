@@ -13,11 +13,16 @@ class voice:
         music_channel = "" #set as bot music channel
 
     async def joinchannel(self, message):
-        try:
-            self.voice = await self.client.join_voice_channel(message.author.voice_channel)
+        if hasattr(self, 'voice'):
+            if self.voice.is_connected():
+                self.channel = message.author.voice_channel
+                await self.voice.move_to(self.channel)
+            else:
+                self.channel = message.author.voice_channel
+                self.voice = await self.client.join_voice_channel(self.channel)
+        else:
             self.channel = message.author.voice_channel
-        except:
-            pass
+            self.voice = await self.client.join_voice_channel(self.channel)
 
     async def leave(self):
         try:
