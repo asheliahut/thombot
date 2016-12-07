@@ -54,6 +54,8 @@ async def on_message(message):
         if message.content.startswith('!v volume'):
             level = int(message.content[10:])
             voice_channel.volume(level)
+        if message.content.startswith('!v skip'):
+            voice_channel.skip()
     for role_search in message.role_mentions:
         if role_search.name == 'Nickelback':
             await commands.nickelback(client, message)
