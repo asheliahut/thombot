@@ -49,12 +49,15 @@ class voice:
                 pass
 
     async def skip(self):
-        if self.player.is_playing():
-            if self.playlist == []:
-                await self.client.send_message(self.music_channel, 'the playlist is empty!')
-            else:
-                self.player.stop()
-                #self.player = await self.voice.create_ytdl_player(self.playlist.pop(), after=self.aftersong())
+        if hasattr(self, 'player'):
+            if self.player.is_playing():
+                if self.playlist == []:
+                    await self.client.send_message(self.music_channel, 'the playlist is empty!')
+                else:
+                    self.player.stop()
+                    self.player = await self.voice.create_ytdl_player(self.playlist.pop(), after = self.aftersong())
+                else:
+                    await self.client.send_message(self.music_channel, 'not playing anything!')
         else:
             await self.client.send_message(self.music_channel, 'not playing anything!')
 
