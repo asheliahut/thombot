@@ -37,12 +37,12 @@ class voice:
                 await self.client.send_message(music_channel, 'Added song to playlist!')
             else:
                 self.player.stop()
-                self.player = await self.voice.create_ytdl_player(url, after = await self.aftersong())
+                self.player = await self.voice.create_ytdl_player(url, after = self.aftersong())
                 self.player.start()
                 self.player.volume = self.v_level
         else:
             try:
-                self.player = await self.voice.create_ytdl_player(url, after = await self.aftersong())
+                self.player = await self.voice.create_ytdl_player(url, after = self.aftersong())
                 self.player.start()
                 self.player.volume = self.v_level
             except:
@@ -58,12 +58,13 @@ class voice:
         else:
             await self.client.send_message(message.channel, 'not playing anything!')
 
-    async def aftersong(self):
+    def aftersong(self):
         if self.playlist == []:
-            await client.send_message(music_channel, "the playlist is empty!")
+            #await client.send_message(music_channel, "the playlist is empty!")
+            pass
         else:
             self.player.stop()
-            self.player = await self.voice.create_ytdl_player(self.playlist.pop(), after = await self.aftersong())
+            self.player = self.voice.create_ytdl_player(self.playlist.pop(), after = self.aftersong())
             self.player.start()
 
     def pause(self):
