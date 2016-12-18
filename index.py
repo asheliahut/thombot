@@ -41,12 +41,12 @@ async def on_message(message):
             pass
     if message.content.startswith('!v '):
         if message.content.startswith('!v join'):
-            await voice_channel.joinchannel(message)
+            await voice_channel.join(message)
         if message.content.startswith('!v leave'):
             await voice_channel.leave()
         if message.content.startswith('!v play'):
             song_to_play = message.content[8:]
-            await voice_channel.playsong(song_to_play)
+            await voice_channel.playsong(song_to_play, message)
         if message.content.startswith('!v pause'):
             voice_channel.pause()
         if message.content.startswith('!v resume'):

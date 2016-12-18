@@ -3,80 +3,93 @@
 import discord
 import asyncio
 
+class VoiceEntry:
+    def __init__(self, message, player):
+        self.channel = message.channel
+        self.player = player
 
-class voice:
-    def __init__(self, client):
-        self.client = client
-        self.channel = ""
-        self.v_level = 0.2
-        self.playlist = []
-        self.music_channel = client.get_channel("253409501716283402")
+class VoiceState:
+    def __init__(self, bot):
+        self.current = None
+        self.voice = None
+        self.bot = bot
+        self.songs = asyncio.Queue()
+        self.play_next_song = asyncio.Event()
+        self.audio_player = self.bot.loop.create_task(self.audio_player_task())
 
-    async def joinchannel(self, message):
-        if hasattr(self, 'voice'):
-            if self.voice.is_connected():
-                self.channel = message.author.voice_channel
-                await self.voice.move_to(self.channel)
-            else:
-                self.channel = message.author.voice_channel
-                self.voice = await self.client.join_voice_channel(self.channel)
+    def is_playing(self):
+        if self.voice is None or self.current is None:
+            return False
+
+        player = self.current.player
+        return not player.is_done()
+
+    def player(self):
+        return self.current.player
+
+    def skip(self):
+        if self.is_playing():
+            self.player.stop()
+
+    def toggle_next(self):
+        self.bot.loop.call_soon_threadsafe(self.play_next_song.set)
+
+    async def audio_player_task(self):
+        while True:
+            self.play_next_song.clear()
+            self.current = await self.songs.get()
+            await self.bot.send_message(self.current.channel, 'Now playing ' + str(self.current))
+            self.current.player.start()
+            await self.play_next_song.wait()
+
+
+class Music:
+    def __init__(self, bot):
+        self.bot = bot
+        self.voice_state = VoiceState(bot)
+
+    def create_voice_client(self, channel):
+        self.voice_state.voice = self.bot.join_voice_channel(channel)
+
+    async def join(self, message):
+        join_channel = message.author.voice_channel
+        if join_channel is None:
+            await bot.say('you\'re not in a voice channel!')
+            return False
+
+        if voice_state.voice is None:
+            self.create_voice_client(join_channel)
         else:
-            self.channel = message.author.voice_channel
-            self.voice = await self.client.join_voice_channel(self.channel)
+            await voice_state.voice.move_to(join_channel)
 
-    async def leave(self):
+        return True
+
+    async def play(self, song, message):
+        if self.voice_state.voice is None:
+            await bot.say('I need to be in a channel to play a song!')
         try:
-            await self.voice.disconnect()
-        except:
-            pass
-
-    async def playsong(self, url):
-        if hasattr(self, 'player'):
-            if self.player.is_playing():
-                self.playlist.append(url)
-                await self.client.send_message(self.music_channel, 'Added song to playlist!')
-            else:
-                self.player.stop()
-                self.player = await self.voice.create_ytdl_player(url, after = self.aftersong())
-                self.player.start()
-                self.player.volume = self.v_level
+            player = await self.voice_state.voice.create_ytdl_player(song, after=self.voice_state.toggle_next)
+        except Exception as e:
+            fmt = 'An error occurred while processing this request: ```py\n{}: {}\n```'
+            await self.bot.say(fmt.format(type(e).__name__, e))
         else:
-            try:
-                self.player = await self.voice.create_ytdl_player(url, after = self.aftersong())
-                self.player.start()
-                self.player.volume = self.v_level
-            except:
-                pass
+            entry = VoiceEntry(message, player)
+            await self.bot.say('added to queue!')
+            await self.voice_state.songs.put(entry)
+
+    async def volume(self, level):
+        if self.voice_state.is_playing():
+            player = self.voice_state.player
+            player.volume = level / 100
+            await self.bot.say('Set the volume to {:.0%}'.format(player.volume))
+
+    async def pause(self):
+        if self.voice_state.is_playing():
+            self.voice_state.player.pause()
+
+    async def resume(self):
+        if self.voice_state.is_playing():
+            self.voice_state.player.resume()
 
     async def skip(self):
-        if hasattr(self, 'player'):
-            if self.player.is_playing():
-                if self.playlist == []:
-                    await self.client.send_message(self.music_channel, 'the playlist is empty!')
-                else:
-                    self.player.stop()
-                    self.player = await self.voice.create_ytdl_player(self.playlist.pop(), after = self.aftersong())
-                    self.player.start()
-            else:
-                await self.client.send_message(self.music_channel, 'not playing anything!')
-        else:
-            await self.client.send_message(self.music_channel, 'not playing anything!')
-
-    def aftersong(self):
-        if self.playlist == []:
-            #await client.send_message(self.music_channel, "the playlist is empty!")
-            pass
-        else:
-            self.player.stop()
-            self.player = self.voice.create_ytdl_player(self.playlist.pop(), after = self.aftersong())
-            self.player.start()
-
-    def pause(self):
-        self.player.pause()
-
-    def resume(self):
-        self.player.resume()
-
-    def volume(self, v_input):
-        self.v_level = v_input / 100
-        self.player.volume = self.v_level
+        self.voice_state.skip()
