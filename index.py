@@ -9,6 +9,7 @@ import voice
 
 #make the client and log in
 client = discord.Client()
+voice_channel = voice.Music(client)
 
 if not discord.opus.is_loaded():
     discord.opus.load_opus('/usr/lib/libopus.so')
