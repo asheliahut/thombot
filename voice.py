@@ -3,6 +3,9 @@
 import discord
 import asyncio
 
+if not discord.opus.is_loaded():
+    discord.opus.load_opus('/usr/lib/libopus.so')
+
 class VoiceEntry:
     def __init__(self, message, player):
         self.channel = message.channel
