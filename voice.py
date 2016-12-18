@@ -57,19 +57,19 @@ class Music:
     async def join(self, message):
         join_channel = message.author.voice_channel
         if join_channel is None:
-            await bot.say('you\'re not in a voice channel!')
+            await self.bot.say('you\'re not in a voice channel!')
             return False
 
-        if voice_state.voice is None:
+        if self.voice_state.voice is None:
             self.create_voice_client(join_channel)
         else:
-            await voice_state.voice.move_to(join_channel)
+            await self.voice_state.voice.move_to(join_channel)
 
         return True
 
     async def play(self, song, message):
         if self.voice_state.voice is None:
-            await bot.say('I need to be in a channel to play a song!')
+            await self.bot.say('I need to be in a channel to play a song!')
         try:
             player = await self.voice_state.voice.create_ytdl_player(song, after=self.voice_state.toggle_next)
         except Exception as e:
