@@ -86,6 +86,9 @@ async def tillISeeYou(client,message):
     days = requests.get(url).text
     await client.send_message(message.channel, 'Ashley gets to see Trevor in '+ days + ' days!')
 
+async def dva(client, message)
+    await client.send_file(message.channel, '/home/pi/thombot/pictures/dva.png')
+
 #async def test(client, message):
     #for channel in message.server.channels:
         #if channel.id == '85228383054594048':
