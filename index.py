@@ -59,9 +59,9 @@ async def on_message(message):
     for role_search in message.role_mentions:
         if role_search.name == 'Nickelback':
             await commands.nickelback(client, message)
-    if re.search(r'[Nn]ew [Yy]ears', message.content):
-        if message.author.bot == False:
-            await client.send_message(message.channel, 'Happy new years, {}!'.format(message.author.mention))
+    #if re.search(r'[Nn]ew [Yy]ears', message.content):
+        #if message.author.bot == False:
+            #await client.send_message(message.channel, 'Happy new years, {}!'.format(message.author.mention))
 
 
 client.run('MjQwOTMyNTAwNzI4MzE1OTA0.CvKq3Q.Rk_7Pllbu3humowD4uYp0gxJ7rM')
