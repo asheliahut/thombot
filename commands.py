@@ -93,7 +93,7 @@ async def stfu(client, message):
     await client.send_message(message.channel, 'https://youtu.be/OLpeX4RRo28')
 
 async def doomfist(client, message):
-    await client.send_message(message.channel, '/home/pi/thombot/picutres/doomfist.jpg')
+    await client.send_file(message.channel, '/home/pi/thombot/picutres/doomfist.jpg')
 
 async def ban(client, message):
     await client.send_message(message.channel, 'you\'ve been banned, ' + message.mentions[1].mention)
