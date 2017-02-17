@@ -18,3 +18,11 @@ I do stuff:
     RETURN THE SLAB
 !wakemeup
     can't wake up
+!dva
+    it's dva
+!stfu
+    shut the fuck up(the musical)
+!doomfist
+    the real doomfist
+!ban
+    it kinda bans someone? I guess. try it out
