@@ -98,6 +98,24 @@ async def doomfist(client, message):
 async def ban(client, message):
     await client.send_message(message.channel, 'you\'ve been banned, {}!'.format(message.mentions[0].mention))
 
+async def melonfic(client, message):
+    await client.send_message(message.channel, 'Melon fanfic by ttariel')
+    await client.send_message(message.channel, 'IT WAS A WARM DAY IN MELON LAND HEN SUDDENLY WITH SHOCK MNELON DAD WOKE UP AND FOUND A GUN UNDER HIS BED; HE STOOD UP AND WENDT OUTSIDE AND WFOUND IT WAS WAR OUTSIDE AND ALSO HIS SON WAS GOEN SO HE WENT TO OUTSIDE AND LOOKED FOR HIS SUN WHEN SUDDENLY WITH SHOCK HIS BAD EVIL ATTACKED HIM AND HE KILLED')
+    await client.send_message(message.channel, 'SO HE KEEPT GOING TO FIND CHILD BUT CHILD STILL GONE SO SEARCH WILL GO ON')
+    await client.send_message(message.channel, 'HE MEETS OTHER BAD GUY BUT HE IS EXTAR EVIL SO HE SHOOTS HIS GUN BUT GUN IS EMPTY SO HE HAS TO FIGHT LIEK THE OLD WORLDF DID WITH FIST ROCKS AND FIITS')
+    await client.send_message(message.channel, 'HE KICKD AND PUNCHD AND WAS ALL IN HIS MIDN WHEN SUDDENLY YOU WANT TO TEST HIM IM SURE OYU FIND THE THINGS I TEACH YA ARE ASURE TO BEATCHA YA')
+    await client.send_message(message.channel, 'SO HE KILLS AND KEEPS GOING')
+    await client.send_message(message.channel, 'WHEN SUDDENLY HE FINS CHILD BEING SLAVE BY BAD SO HE KILLS PEOPLE AND FIND S SONE ANDS SAID CHILD YOU ARE BACK NOW')
+    await client.send_message(message.channel, 'AND CHIDL SAID')
+    await client.send_message(message.channel, 'YES PAPA')
+    await client.send_message(message.channel, 'AND TEHY WNTES HOME WHEN SUDDENLY WITH SHOCK')
+    await client.send_message(message.channel, 'EVIL ATATCKS AGAIN')
+    await client.send_message(message.channel, 'SO FATHER MELOMN TAKES HCILD MELON ANDS YELSS')
+    await client.send_message(message.channel, 'I WILL BEAT YOU WITH POWER OF PARENT')
+    await client.send_message(message.channel, 'AND HE KILLED EVIÖL')
+    await client.send_message(message.channel, 'THEY WNET HOME AND GOT HAIRCUT THE END')
+    await client.send_message(message.channel, 'done')
+
 #async def test(client, message):
     #for channel in message.server.channels:
         #if channel.id == '85228383054594048':
