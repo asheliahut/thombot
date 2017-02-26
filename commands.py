@@ -69,7 +69,6 @@ async def slab(client,message):
 async def wakemeup(client,message):
     await client.send_message(message.channel, 'no')
 
-
 async def setavatar(client,message):
     role_test = 1
     for role in message.author.roles:
@@ -80,11 +79,6 @@ async def setavatar(client,message):
             break
     if role_test == 1:
         await client.send_message(message.channel, 'You\'re not a bot friend!')
-
-async def tillISeeYou(client,message):
-    url = 'http://iwillseeyousoon.com/countdown.php'
-    days = requests.get(url).text
-    await client.send_message(message.channel, 'Ashley gets to see Trevor in '+ days + ' days!')
 
 async def dva(client, message):
     await client.send_file(message.channel, '/home/pi/thombot/pictures/dva.png')
@@ -98,9 +92,5 @@ async def doomfist(client, message):
 async def ban(client, message):
     await client.send_message(message.channel, 'you\'ve been banned, {}!'.format(message.mentions[0].mention))
 
-
-#async def test(client, message):
-    #for channel in message.server.channels:
-        #if channel.id == '85228383054594048':
-            #cream = discord.Channel(id = '85228383054594048')
-            #await client.send_message(channel, 'please work')
+async def mission_statement(client, message):
+    await client.send_file(message.channel, '/home/pi/thombot/pictures/thom_stargazer.jpg')
