@@ -94,3 +94,6 @@ async def ban(client, message):
 
 async def mission_statement(client, message):
     await client.send_file(message.channel, '/home/pi/thombot/pictures/thom_stargazer.jpg')
+
+async def goo(client, message):
+    await client.send_file(message.channel, '/home/pi/thombot/pictures/goo.jpg')
