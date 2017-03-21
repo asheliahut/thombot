@@ -20,7 +20,7 @@ async def on_ready():
     print(client.user.name)
     print(client.user.id)
     print('--------')
-    await client.change_presence(game=discord.Game(name='death stranding'))
+    await client.change_presence(game=discord.Game(name='Welcome to the future!'))
 
 #welcome new members to the server
 @client.event
