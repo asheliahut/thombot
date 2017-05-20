@@ -1,4 +1,5 @@
 #basic imports
+import token
 import discord
 import asyncio
 import re
@@ -64,4 +65,4 @@ async def on_message(message):
             #await client.send_message(message.channel, 'Happy new years, {}!'.format(message.author.mention))
 
 
-client.run('MjQwOTMyNTAwNzI4MzE1OTA0.CvKq3Q.Rk_7Pllbu3humowD4uYp0gxJ7rM')
+client.run(token.token)
