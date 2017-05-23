@@ -26,6 +26,10 @@ async def bothelp(client, message):
     help_info = help_file.read()
     await client.send_message(message.author, help_info)
     help_file.close()
+    
+#triggered thomas
+async def triggered(client, message):
+    await client.send_message(message.channel, 'http://myriamsmemeoftheday.weebly.com/uploads/7/7/8/8/77889656/thomas-sees-triggered-trent.jpg')
 
 #random harambe picture
 async def harambe(client, message):
